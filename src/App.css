@@ -107,12 +107,11 @@ nav{
 }
 
 #Skills{
-  background-color: black;
-  width: 100%;
-  height: 600px;
-  background-image: url(/public/library.jpg);
+  height: 700px;
+  background-image: url(/public/sky.gif);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: 0%;
   h1{
     font-family: "Pixelify Sans", sans-serif;
     color: white;
@@ -126,25 +125,42 @@ nav{
   #Skills-Filter{
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     height: 100%;
     background-image:
-      linear-gradient(rgb(0, 0, 0) 10%,
+      linear-gradient(rgba(0, 0, 0, 0.973) 10%,
       rgba(0, 0, 0, 0.59) 50%, 
-      rgb(0, 0, 0) 90%);
-
+      rgba(0, 0, 0, 0.938) 90%);
     .Giants{
       width: 70px;
     }
   }
 }
 
-#front-end, #back-end, #bd{
+.languages-column{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  img{
+    margin: 15px;
+  }
+  h1{
+    font-size: 22px;
+  }
+}
+
+#titles{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  height: 100%;
+  gap: 165px;
+  margin: 15px;
 }
 
 .book{
@@ -153,4 +169,33 @@ nav{
   justify-content: center;
   align-items: center;
   margin: 15px;
+  img{
+    -webkit-mask-image: url('/HTML.png'); /* usa a transparência do PNG */
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    -webkit-mask-position: center;
+
+    mask-image: url('/HTML.png');
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
+
+    background: white; /* cor do "preenchimento" */
+    border: 2px solid #00f; /* cor e espessura da borda */
+    border-radius: 0; /* pode ajustar */
+
+    animation: breathing 4s ease-in-out infinite; /* respiração */
+  }
+
+  img:hover{
+    filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.6));
+    cursor: pointer;
+  }
 }
+
+@keyframes breathing {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(-10px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
+}
+
