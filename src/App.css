@@ -1,11 +1,21 @@
-nav{
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   position: fixed;
+  top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 1000;
+
+  transition: background 0.3s ease;
+  background: transparent; /* começa transparente */
 }
+
+nav.scrolled {
+  background: black; /* fica preto ao descer */
+}
+
 
 #AboutMe{
   background-image: url(/public/background-pixeled.gif);
@@ -41,7 +51,7 @@ nav{
 
 #AboutMe2{
   width: 100%;
-  background-image: url(/public/background2.jpeg);
+  background-image: url(/public/background2.png);
   background-repeat: no-repeat;
   height: 900px;
   background-size: cover;
@@ -73,12 +83,11 @@ nav{
   text-align: center;
   flex-direction: row;
   justify-content: center;
-  background-image: linear-gradient(
-    rgb(0, 0, 0.0) 0%,     /* topo escuro */
-    rgba(0, 0, 0, 0.7) 40%,   /* clareando */
-    rgba(0, 0, 0, 0.7) 60%,   /* clareando */
-    rgba(0, 0, 0, 1.0) 100%   /* embaixo escuro */
-  );
+  background-image:  linear-gradient(
+    rgba(0, 0, 0, 1) 5%,
+    rgba(0, 0, 0, 0.7) 50%, 
+    rgba(0, 0, 0, 1) 95%
+  );  
 }
 
 #SocialNetworks{
@@ -87,6 +96,10 @@ nav{
     margin: 5px;
     color: whitesmoke;
   }
+}
+
+#AboutMe-Content{
+  max-width: 400px;
 }
 
 #Links{
@@ -104,10 +117,17 @@ nav{
   height: 100px;
   width: 100%;
   background-color: black;
+  color: white;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  h6{
+    margin: 15px;
+  }
 }
 
 #Skills{
-  height: 700px;
+  height: 800px;
   background-image: url(/public/sky.gif);
   background-repeat: no-repeat;
   background-size: cover;
@@ -123,17 +143,27 @@ nav{
     width: 100px;
   }
   #Skills-Filter{
+    height: 800px;
     display: flex;
     justify-content: center;
-    flex-direction: row;
     align-items: center;
-    height: 100%;
+    flex-direction: column;
+    #Skills-Title{
+      padding: 50px;
+      font-size: 46px;
+    }
     background-image:
-      linear-gradient(rgba(0, 0, 0, 0.973) 10%,
+      linear-gradient(rgba(0, 0, 0, 1) 5%,
       rgba(0, 0, 0, 0.59) 50%, 
-      rgba(0, 0, 0, 0.938) 90%);
+      rgba(0, 0, 0, 1) 98%);
     .Giants{
       width: 70px;
+    }
+    #Table-Skills{
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      align-items: center;
     }
   }
 }
@@ -199,3 +229,90 @@ nav{
   100% { transform: translateY(0) scale(1); }
 }
 
+#Projects{
+  background-image: url(/public/background-stars.gif);
+  background-position: 50%;
+  p{
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+}
+
+#Projects-Filter{
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image:
+      linear-gradient(rgba(0, 0, 0, 0.973) 10%,
+      rgba(0, 0, 0, 0.59) 50%, 
+      rgba(0, 0, 0, 0.938) 90%);
+  h1{
+    padding-top: 100px;
+  }
+}
+
+.Card-Project{
+  max-width: 500px;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+
+.Card-Inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.Picture-Project{
+  img{
+    margin: 15px;
+    width: 500px;
+    border: 2px solid white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  }
+}
+#Picture-Project-BT{
+  img{
+    width: 200px;
+    margin-top: 15px;
+    -webkit-mask-image: url('/BrainTalk.png'); /* usa a transparência do PNG */
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    -webkit-mask-position: center;
+
+    mask-image: url('/BrainTalk.png');
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
+
+    background: white; /* cor do "preenchimento" */
+    border: 2px solid white; /* cor e espessura da borda */
+    border-radius: 0;
+  }
+}
+
+
+.Tecnologies{
+  img{
+    width: 70px;
+  }
+}
+
+#Big-Tecnologies{
+  img{
+    width: 50px;
+    margin: 5px;
+  }
+}
