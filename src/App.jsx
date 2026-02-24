@@ -33,6 +33,13 @@ import { motion } from "framer-motion"
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false)
+  const [copied, setCopied] = useState(false)
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText("joaobrito.cassiano@gmail.com")
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,9 +68,12 @@ export default function App() {
           <a href="https://www.linkedin.com/in/joaocassiannoo/" target="_blank">
             <FaLinkedin className="hover:text-[#7fffd4] transition" size={50}/>
           </a>
-          <a href="mailto:joaobrito.cassiano@gmail.com" target="_blank">
-            <MdEmail className="hover:text-[#7fffd4] transition" size={55}/>
-          </a>
+          <button onClick={copyEmail} className="relative group">
+            <MdEmail className="hover:text-[#7fffd4] transition" size={55} />
+            <span className={`absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs px-2 py-1 rounded-lg bg-[#7fffd4] text-black font-medium whitespace-nowrap transition-all duration-300 ${copied ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}>
+              Copied!
+            </span>
+          </button>
         </div>
         <p>Let’s Connect</p>
       </nav>
@@ -74,6 +84,7 @@ export default function App() {
         <About />
         <Skills />
         <Projects />
+        <Footer copyEmail={copyEmail} copied={copied} />
 
       </div>
     </div>
@@ -597,5 +608,96 @@ function Projects() {
         </div>
       </div>
     </motion.section>
+  )
+}
+
+/* ================= FOOTER ================= */
+
+function Footer({ copyEmail, copied }) {
+  return (
+    <footer className="relative py-24 px-6 mt-10">
+
+      {/* Top divider line */}
+      <div className="max-w-6xl mx-auto">
+        <div className="h-px bg-gradient-to-r from-transparent via-[#7fffd4]/30 to-transparent mb-20" />
+      </div>
+
+      <div className="max-w-6xl mx-auto flex flex-col items-center text-center gap-10">
+
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-[#7fffd4]/50 text-sm uppercase tracking-[0.3em] mb-3">— Let's Connect —</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-white">
+            Get in touch
+          </h2>
+          <p className="text-white/40 mt-4 text-base max-w-md">
+            Open to new opportunities, collaborations, or just a good conversation about tech.
+          </p>
+        </motion.div>
+
+        {/* Social Links */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-center gap-4"
+        >
+          {/* GitHub */}
+          <a
+            href="https://github.com/JoaoCassianoo"
+            target="_blank"
+            className="flex items-center gap-3 px-6 py-3 rounded-2xl border border-white/10 bg-white/5 hover:border-[#7fffd4]/50 hover:bg-[#7fffd4]/10 transition-all duration-300 group"
+          >
+            <FaGithub size={22} className="text-white/60 group-hover:text-[#7fffd4] transition" />
+            <span className="text-white/70 group-hover:text-white text-sm font-medium transition">GitHub</span>
+          </a>
+
+          {/* LinkedIn */}
+          <a
+            href="https://www.linkedin.com/in/joaocassiannoo/"
+            target="_blank"
+            className="flex items-center gap-3 px-6 py-3 rounded-2xl border border-white/10 bg-white/5 hover:border-[#7fffd4]/50 hover:bg-[#7fffd4]/10 transition-all duration-300 group"
+          >
+            <FaLinkedin size={22} className="text-white/60 group-hover:text-[#7fffd4] transition" />
+            <span className="text-white/70 group-hover:text-white text-sm font-medium transition">LinkedIn</span>
+          </a>
+
+          {/* Email copy */}
+          <button
+            onClick={copyEmail}
+            className="flex items-center gap-3 px-6 py-3 rounded-2xl border border-white/10 bg-white/5 hover:border-[#7fffd4]/50 hover:bg-[#7fffd4]/10 transition-all duration-300 group relative"
+          >
+            <MdEmail size={22} className="text-white/60 group-hover:text-[#7fffd4] transition" />
+            <span className="text-white/70 group-hover:text-white text-sm font-medium transition">
+              {copied ? "Copied!" : "joaobrito.cassiano@gmail.com"}
+            </span>
+            {copied && (
+              <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-xs px-2 py-1 rounded-lg bg-[#7fffd4] text-black font-semibold whitespace-nowrap animate-bounce">
+                ✓ Copied to clipboard!
+              </span>
+            )}
+          </button>
+        </motion.div>
+
+        {/* Bottom bar */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="flex flex-col md:flex-row items-center gap-2 text-white/20 text-sm pt-6 border-t border-white/5 w-full justify-between"
+        >
+          <p>© {new Date().getFullYear()} João Cassiano</p>
+          <p>Built with React + Tailwind + ☕</p>
+        </motion.div>
+
+      </div>
+    </footer>
   )
 }
