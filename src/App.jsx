@@ -513,7 +513,7 @@ function Projects() {
 
           <div className="flex justify-center">
             <a
-              href="LINK_DO_REPOSITORIO_DA_IA_AQUI"
+              href="https://github.com/JoaoCassianoo/financial-fraud-detection"
               target="_blank"
               className="text-center px-8 py-3 rounded-xl border border-[#7fffd4] text-[#7fffd4] font-semibold hover:bg-[#7fffd4] hover:text-black transition"
             >
@@ -571,7 +571,7 @@ function Projects() {
 
           <div className="flex justify-center">
             <a
-              href="https://github.com/cc22153/EduCare"
+              href="https://github.com/JoaoCassianoo/EduCare"
               target="_blank"
               className="text-center px-8 py-3 rounded-xl border border-[#7fffd4] text-[#7fffd4] font-semibold hover:bg-[#7fffd4] hover:text-black transition"
             >
