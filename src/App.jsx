@@ -18,8 +18,6 @@ import {
   SiFirebase,
   SiReact,
   SiVite,
-  SiHtml5,
-  SiCss3,
   SiTailwindcss,
   SiDocker,
   SiGit,
@@ -28,7 +26,7 @@ import {
 import { PiAvocadoBold } from "react-icons/pi";
 import { TbBrandCSharp } from "react-icons/tb";
 import { MdEmail } from "react-icons/md";
-import { FaGithub, FaLinkedin } from "react-icons/fa"
+import { FaGithub, FaLinkedin, FaCss3Alt, FaHtml5 } from "react-icons/fa"
 import { motion } from "framer-motion"
 
 export default function App() {
@@ -57,8 +55,10 @@ export default function App() {
     >
       {/* NAVBAR */}
       <nav
-        className={`fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 transition-all duration-300 ${
-          scrolled ? "bg-black/80 backdrop-blur-md lg:bg-transparent lg:backdrop-blur-none" : "bg-transparent"
+        className={`fixed z-50 flex justify-between items-center px-6 py-4 transition-all duration-300 ${
+          scrolled
+            ? "top-4 left-4 right-4 bg-black/10 backdrop-blur-md border border-white/10 rounded-lg"
+            : "top-0 left-0 right-0 bg-transparent"
         }`}
       >
         <div className="flex gap-4 text-xl items-center">
@@ -304,8 +304,8 @@ function Skills() {
       skills: [
         { name: "React", icon: <SiReact /> },
         { name: "Vite", icon: <SiVite /> },
-        { name: "HTML", icon: <SiHtml5 /> },
-        { name: "CSS", icon: <SiCss3 /> },
+        { name: "HTML", icon: <FaHtml5 /> },
+        { name: "CSS", icon: <FaCss3Alt/> },
         { name: "Tailwind", icon: <SiTailwindcss /> },
       ],
     },
